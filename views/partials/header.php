@@ -23,7 +23,7 @@
 					<span class="navbar-toggler-icon"></span>
 				</button>
 				<!-- Brand -->
-				<a class="navbar-brand pt-0" href="<?php echo get_base_url(); ?>">
+				<a class="navbar-brand pt-0" href="<?php echo get_url(); ?>">
 					<div class="navbar-brand-icon "><i class="ni ni-spaceship"></i></div>
 					<span class="navbar-brand-text">My App</span>
 				</a>
@@ -42,7 +42,7 @@
 								<h6 class="text-overflow m-0">Welcome!</h6>
 							</div>
 							<div class="dropdown-divider"></div>
-							<a href="/logout" class="dropdown-item">
+							<a href="<?php echo get_url( 'logout' ); ?>" class="dropdown-item">
 								<i class="ni ni-user-run"></i>
 								<span>Logout</span>
 							</a>
@@ -55,7 +55,7 @@
 					<div class="navbar-collapse-header d-md-none">
 						<div class="row">
 							<div class="col-6 collapse-brand">
-								<a class="navbar-brand pt-0" href="<?php echo get_base_url(); ?>">
+								<a class="navbar-brand pt-0" href="<?php echo get_url(); ?>">
 									<div class="navbar-brand-icon "><i class="ni ni-spaceship"></i></div>
 									<span class="navbar-brand-text">My App</span>
 								</a>
@@ -101,7 +101,7 @@
 									<h6 class="text-overflow m-0">Welcome!</h6>
 								</div>
 								<div class="dropdown-divider"></div>
-								<a href="/logout" class="dropdown-item">
+								<a href="<?php echo get_url( 'logout' ); ?>" class="dropdown-item">
 									<i class="ni ni-user-run"></i>
 									<span>Logout</span>
 								</a>

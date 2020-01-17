@@ -12,7 +12,7 @@
 						<h3 class="mb-0">Users</h3>
 					</div>
 					<div class="float-right">
-						<a href="/users/add" class="btn btn-success right">Add User</a>
+						<a href="<?php echo get_url( 'users/add' ); ?>" class="btn btn-success right">Add User</a>
 					</div>
 				</div>
 				<div class="table-responsive">
@@ -41,8 +41,8 @@
 									****
 								</td>
 								<td>
-									<a href="/users/edit/<?php echo $user['username']; ?>" class="btn btn-info">Edit</a>
-									<a href="/users/delete/<?php echo $user['username']; ?>" class="delete btn btn-danger">Delete</a>
+									<a href="<?php echo get_url( 'users/edit/' . $user['username'] ); ?>" class="btn btn-info">Edit</a>
+									<a href="<?php echo get_url( 'users/delete/' . $user['username'] ); ?>" class="delete btn btn-danger">Delete</a>
 								</td>
 							</tr>
 							<?php } ?>
@@ -51,7 +51,7 @@
 				</div>
 				<?php
 				Flight::render( 'partials/pagination', array(
-					'pagination_url' => '/users',
+					'pagination_url' => get_url('users'),
 					'page' => $page,
 					'total_pages' => $total_pages
 				) );

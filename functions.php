@@ -1,22 +1,20 @@
 <?php
 /**
- * get base / home url of app
+ * get url of path
  *
  * @since  1.0.0
  *
  * @return [type] [description]
  */
-function get_base_url(){
-	$base_dir  = __DIR__; // Absolute path
-	$doc_root  = preg_replace("!${_SERVER['SCRIPT_NAME']}$!", '', $_SERVER['SCRIPT_FILENAME']); # ex: /var/www
-	$base_url  = preg_replace("!^${doc_root}!", '', $base_dir); # ex: '' or '/mywebsite'
+function get_url( $path = '' ){
+    $base_url  = Flight::request()->base;
 	$protocol  = empty($_SERVER['HTTPS']) ? 'http' : 'https';
 	$port      = $_SERVER['SERVER_PORT'];
 	$disp_port = ($protocol == 'http' && $port == 80 || $protocol == 'https' && $port == 443) ? '' : ":$port";
 	$domain    = $_SERVER['SERVER_NAME'];
-	$home_url  = "${protocol}://${domain}${disp_port}${base_url}"; # Ex: 'http://example.com', 'https://example.com/mywebsite', etc.
+	$home_url  = "${protocol}://${domain}${disp_port}${base_url}";
 
-	return trailingslashit( $home_url );
+	return trailingslashit( $home_url ) . ltrim( $path, '/\\' );
 }
 
 /**

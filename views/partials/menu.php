@@ -9,7 +9,7 @@ if ( empty($menu) ) {
 	$request = Flight::request();
 	foreach ($menu as $data) {
 	?>
-	<li class="nav-item <?php echo $request->url == $data['url'] ? 'active' : ''; ?> ">
+	<li class="nav-item <?php echo get_url( $request->url ) == $data['url'] ? 'active' : ''; ?> ">
 		<a class="nav-link " href="<?php echo $data['url']; ?>">
 			<i class="<?php echo @$data['icon']; ?> text-primary"></i> <?php echo $data['text']; ?>
 		</a>
