@@ -65,3 +65,24 @@ function trailingslashit( $string ) {
 function untrailingslashit( $string ) {
     return rtrim( $string, '/\\' );
 }
+
+/**
+ * Generate random string
+ *
+ * @since  1.0.0
+ *
+ * @param  int    $length [description]
+ *
+ * @return [type]         [description]
+ */
+function getRandomString($length = 10) {
+	$characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+    $randomString = '';
+
+    for ($i = 0; $i < $length; $i++) {
+        $index = rand(0, strlen($characters) - 1);
+        $randomString .= $characters[$index];
+    }
+
+    return $randomString;
+}
