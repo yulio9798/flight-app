@@ -20668,4 +20668,32 @@ pre>code.highlight {
   margin-left: 1rem;
 }
 
+.navbar-brand-icon {
+  font-size: 4em;
+  color: #5f72e4;
+}
+
+.navbar-brand-text {
+  text-transform: uppercase;
+  color: #6b6ae4;
+  font-weight: bold;
+}
+
+@media (max-width: 768px) {
+  .navbar-brand {
+    display: table;
+  }
+  .navbar-brand-icon {
+    font-size: 2em;
+    display: table-cell;
+    vertical-align: middle;
+  }
+
+  .navbar-brand-text {
+    display: table-cell;
+    vertical-align: middle;
+    padding-left: 10px;
+  }
+}
+
 /*# sourceMappingURL=dashboard-free.css.map */

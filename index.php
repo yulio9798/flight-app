@@ -1,9 +1,29 @@
 <?php
 require 'vendor/autoload.php';
+require 'functions.php';
+
+require_all_files( 'includes' );
+
+Flight::view()->set('asset_url', get_base_url() . 'assets' );
+Flight::view()->set('menu', array(
+	array(
+		'url' => '/',
+		'icon' => 'ni ni-tv-2',
+		'text' => 'Dashboard'
+	),
+	array(
+		'url' => '/users',
+		'icon' => 'ni ni-circle-08',
+		'text' => 'Users'
+	),
+) );
 
 if ( session_status() == PHP_SESSION_NONE ) {
 	session_start();
 }
+
+// set database connection
+Flight::register('db', 'MysqliDb', array( 'localhost', 'root', '', 'deft__learn' ) );
 
 Flight::route('/', function(){
 	if ( !isset( $_SESSION['user'] ) ) {
@@ -11,35 +31,8 @@ Flight::route('/', function(){
 		exit();
 	}
 
+	Flight::view()->set('title', 'Dashboard');
     Flight::render( 'dashboard', array( 'name' => $_SESSION['user'] ) );
-});
-
-Flight::route('GET /login', function(){
-    Flight::render( 'login' );
-});
-
-Flight::route('POST /login', function(){
-    $username = $_POST['username'];
-    $password = $_POST['password'];
-
-    // cek di database dan login / redirect kalo ga terdaftar
-    $exist = $username == 'user';
-    if ( $exist ) {
-    	// logged in
-    	$_SESSION['user'] = 'user';
-    	Flight::redirect( '/' );
-    } else {
-    	// kembalikan ke hlaman login
-    	Flight::redirect( '/login' );
-    }
-});
-
-Flight::route( '/logout', function(){
-	if ( isset( $_SESSION['user'] ) ){
-		unset( $_SESSION['user'] );
-	}
-
-	Flight::redirect( '/login' );
 });
 
 Flight::start();
