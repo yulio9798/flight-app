@@ -4,15 +4,15 @@ require 'functions.php';
 
 require_all_files( 'includes' );
 
-Flight::view()->set('asset_url', get_base_url() . 'assets' );
+Flight::view()->set('asset_url', get_url( 'assets' ) );
 Flight::view()->set('menu', array(
 	array(
-		'url' => '/',
+		'url' => get_url(),
 		'icon' => 'ni ni-tv-2',
 		'text' => 'Dashboard'
 	),
 	array(
-		'url' => '/users',
+		'url' => get_url('users'),
 		'icon' => 'ni ni-circle-08',
 		'text' => 'Users'
 	),
