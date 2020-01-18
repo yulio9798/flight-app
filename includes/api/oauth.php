@@ -5,7 +5,7 @@ Flight::register( 'oauthServer', 'OAuth2\Server', array( $storage ) );
 Flight::oauthServer()->addGrantType(new OAuth2\GrantType\ClientCredentials($storage));
 
 // route for get token
-Flight::route( '/oauth/token', function(){
+Flight::route( 'POST /oauth/token', function(){
 	Flight::oauthServer()->handleTokenRequest(OAuth2\Request::createFromGlobals())->send();
 });
 
