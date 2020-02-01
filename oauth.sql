@@ -1,7 +1,7 @@
 #
 # SQL Export
 # Created by Querious (201069)
-# Created: 17 January 2020 22.54.05 GMT+7
+# Created: 1 February 2020 08.46.36 GMT+7
 # Encoding: Unicode (UTF-8)
 #
 
@@ -86,6 +86,62 @@ CREATE TABLE `oauth_users` (
   `scope` varchar(4000) DEFAULT NULL,
   PRIMARY KEY (`username`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+
+
+
+SET FOREIGN_KEY_CHECKS = @PREVIOUS_FOREIGN_KEY_CHECKS;
+
+
+SET @PREVIOUS_FOREIGN_KEY_CHECKS = @@FOREIGN_KEY_CHECKS;
+SET FOREIGN_KEY_CHECKS = 0;
+
+
+LOCK TABLES `oauth_access_tokens` WRITE;
+ALTER TABLE `oauth_access_tokens` DISABLE KEYS;
+INSERT INTO `oauth_access_tokens` (`access_token`, `client_id`, `user_id`, `expires`, `scope`) VALUES 
+	('15e9e1ad07a0f6e37a2cceb0b7cbaa7ea723a8a8','testclient',NULL,'2020-02-01 09:40:43',NULL),
+	('e9ba03b709dc9500981f79e68dc7d91548534022','testclient',NULL,'2020-02-01 09:42:13',NULL);
+ALTER TABLE `oauth_access_tokens` ENABLE KEYS;
+UNLOCK TABLES;
+
+
+LOCK TABLES `oauth_authorization_codes` WRITE;
+ALTER TABLE `oauth_authorization_codes` DISABLE KEYS;
+ALTER TABLE `oauth_authorization_codes` ENABLE KEYS;
+UNLOCK TABLES;
+
+
+LOCK TABLES `oauth_clients` WRITE;
+ALTER TABLE `oauth_clients` DISABLE KEYS;
+INSERT INTO `oauth_clients` (`client_id`, `client_secret`, `redirect_uri`, `grant_types`, `scope`, `user_id`) VALUES 
+	('testclient','testsecret',NULL,NULL,NULL,NULL);
+ALTER TABLE `oauth_clients` ENABLE KEYS;
+UNLOCK TABLES;
+
+
+LOCK TABLES `oauth_jwt` WRITE;
+ALTER TABLE `oauth_jwt` DISABLE KEYS;
+ALTER TABLE `oauth_jwt` ENABLE KEYS;
+UNLOCK TABLES;
+
+
+LOCK TABLES `oauth_refresh_tokens` WRITE;
+ALTER TABLE `oauth_refresh_tokens` DISABLE KEYS;
+ALTER TABLE `oauth_refresh_tokens` ENABLE KEYS;
+UNLOCK TABLES;
+
+
+LOCK TABLES `oauth_scopes` WRITE;
+ALTER TABLE `oauth_scopes` DISABLE KEYS;
+ALTER TABLE `oauth_scopes` ENABLE KEYS;
+UNLOCK TABLES;
+
+
+LOCK TABLES `oauth_users` WRITE;
+ALTER TABLE `oauth_users` DISABLE KEYS;
+ALTER TABLE `oauth_users` ENABLE KEYS;
+UNLOCK TABLES;
 
 
 
